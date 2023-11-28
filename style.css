@@ -1,0 +1,19 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0px;
+  padding: 0px;
+}
+
+.target {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+
+#time {
+  text-align: center;
+  font-size: 30px;
+}
