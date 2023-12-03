@@ -13,13 +13,15 @@ function getRandomInterval(min, max) {
 async function updateImage() {
   let randomNumber = Math.floor(Math.random() * 1010) + 1;
   console.log(randomNumber);
-  let imgurl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomNumber}.png`
+  let imgurl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomNumber}.png`;
+  let pokename = `https://pokeapi.co/api/v2/pokemon-form/132/`;
+  console.log(pokename)
   
   let target = document.querySelector('.target');
   target.src = imgurl;
   target.style.display = 'block' 
-  target.style.width = '150px'
-  target.style.height = '150px'
+  target.style.width = '120px'
+  target.style.height = '120px'
 
   console.log(randomPos)
 
