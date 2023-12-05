@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>메인페이지</title>
   <link rel="stylesheet" href="main.css">
   <script src="https://kit.fontawesome.com/ac380aa359.js" crossorigin="anonymous"></script>
 </head>
@@ -32,11 +32,21 @@
           <i class="fa-regular fa-money-bill-1 icon"></i>
           <div class="icon-title">굿즈</div>
         </div>
+        <form id="loginform">
+          <input type="text" id="login">
+        </form>
+        <p id="welcome" style="display:none;"></p>
+        <button id="logout" style="display:none;">로그아웃  </button>
+        <div class="head-card" id="pokedex">
+          <i class="fa-solid fa-book icon"></i>
+          <div class="icon-title">포켓몬 도감</div>
+        </div>
       </div>
     </header>
     <section>
-      
+      <img src="./pokemongame/img/mainboll.png" alt="pokebol" id="mainboll">
     </section>
   </div>
+  <script type="text/javascript" src="./main.js"></script>
 </body>
 </html>

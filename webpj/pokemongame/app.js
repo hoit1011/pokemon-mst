@@ -1,3 +1,6 @@
+const current_user = localStorage.getItem("current_user")
+document.getElementById("user").innerText = `user = ${current_user}`
+
 function getRandomPosition() {
   let y = 700;
   let x = 1550;
@@ -216,7 +219,6 @@ function starExplosion(img) {
     setTimeout(function() {
       star.style.top = (img.offsetTop + 25 - 5 + Math.sin(angle) * distance) + 'px';
       star.style.left = (img.offsetLeft + 25 - 5 + Math.cos(angle) * distance) + 'px';
-      star.style.opacity = 0;
     }, 1);
 
     setTimeout(function() {

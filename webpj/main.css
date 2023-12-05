@@ -65,3 +65,52 @@ a{
   color: white;
   font-weight: bold;
 }
+
+#login{
+  outline: none;
+  border: none;
+  margin-left: 280px;
+  margin-right: 30px;
+  width: 200px;
+  height: 30px;
+  padding-left: 20px;
+  border-radius: 5px;
+}
+
+#welcome{
+  margin-left: 280px;
+  margin-right: 30px;
+  width: 200px;
+  height: 30px;
+  padding-left: 20px;
+}
+
+#logout{
+  margin-right: 20px;
+  background-color: white;
+  border: none;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#logout:hover{
+  cursor: pointer;
+}
+
+#welcome{
+  color: white;
+  font-weight: bold;
+}
+
+section{
+  text-align: center;
+}
+
+#mainboll{
+  position: fixed;
+  width: 300px;
+  margin-top: 300px;
+  margin-left: -140px;
+}
