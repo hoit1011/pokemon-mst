@@ -13,8 +13,8 @@ loginform.addEventListener("submit", function(event) {
   fetch('http://localhost:3000/users')
   .then(response => response.json())
   .then(users => {
-    const exists = users.some(user => user.name === name);
-    if (!exists) {
+    const user = users.find(user => user.name === name);
+    if (!user) {
       fetch('http://localhost:3000/users', {
         method: 'POST',
         body: JSON.stringify({ name: name }),
@@ -29,16 +29,19 @@ loginform.addEventListener("submit", function(event) {
         welcome.style.display = "block";
         logout.style.display = "block"; 
         localStorage.setItem("current_user", user.name);
+        localStorage.setItem("current_user_id", user.id);
       });
     } else {
       loginform.style.display = "none";
-      welcome.innerText = `환영합니다, ${name}님!`;
+      welcome.innerText = `환영합니다, ${user.name}님!`;
       welcome.style.display = "block";
       logout.style.display = "block"; 
-      localStorage.setItem("current_user", name);
+      localStorage.setItem("current_user", user.name);
+      localStorage.setItem("current_user_id", user.id);
     }
   });
 });
+
 
 logout.addEventListener("click", function() { 
   localStorage.removeItem('current_user');

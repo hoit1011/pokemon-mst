@@ -1,4 +1,5 @@
 const current_user = localStorage.getItem("current_user")
+const user_id = localStorage.getItem("current_user_id")
 document.getElementById("user").innerText = `user = ${current_user}`
 
 function getRandomPosition() {
@@ -30,7 +31,7 @@ async function updateImage() {
   }))
   let randomNumber = Math.floor(Math.random() * 1010) + 1;
   let imgurl = pokemon[randomNumber].image
-  let pokemonid = pokemon[randomNumber].id
+  pokemonid = pokemon[randomNumber].id
   pokemonname = pokemon[randomNumber].name
   
   let target = document.querySelector('.target');
@@ -157,7 +158,23 @@ const catchpokemon = (img) => {
               excus.textContent = `${pokemonname}이 잡혔습니다`
               img.style.filter = 'grayscale(80%)';
               starExplosion(img)
-            },3500)
+              fetch(`http://localhost:3000/users/${user_id}`)
+                .then(response => response.json())
+                .then(user => {
+                  if (!user.pokemon) user.pokemon = [];
+                  console.log("아아아아아")
+                  user.pokemon.push(pokemonid);
+                  fetch(`http://localhost:3000/users/${user_id}`, {
+                    method: 'PATCH',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                  })
+                  .catch(error => console.error('Error:', error));
+                })
+                .catch(error => console.error('Error:', error));
+              }, 3500);
             }
             else{
               console.log("놓쳤습니다 ! ")
