@@ -1,4 +1,3 @@
-// JavaScript
 const loginform = document.getElementById("loginform");
 const login = document.getElementById("login");
 const welcome = document.getElementById("welcome");

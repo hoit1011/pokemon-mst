@@ -13,12 +13,25 @@ function getRandomInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+let pokemonid
+let pokemonname
+
 async function updateImage() {
+  const promises = []
+  for (let i = 1; i <= 1010; i++) {
+    const url = `https://pokeapi.co/api/v2/pokemon/${i}`
+    promises.push(fetch(url).then(res => res.json()))
+  }
+  const result = await Promise.all(promises);
+  const pokemon = result.map(data => ({
+    id: data.id,
+    name: data.name,
+    image: data.sprites["front_default"],
+  }))
   let randomNumber = Math.floor(Math.random() * 1010) + 1;
-  console.log(randomNumber);
-  let imgurl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomNumber}.png`;
-  let pokename = `https://pokeapi.co/api/v2/pokemon-form/132/`;
-  console.log(pokename)
+  let imgurl = pokemon[randomNumber].image
+  let pokemonid = pokemon[randomNumber].id
+  pokemonname = pokemon[randomNumber].name
   
   let target = document.querySelector('.target');
   target.src = imgurl;
@@ -112,9 +125,9 @@ const catchpokemon = (img) => {
     let randomY = randomPos[1];
     console.log(randomX)
     console.log(randomY)
-    if(Math.abs(randomX - bollclickx) < 50 && Math.abs(randomY - bollclicky) < 50){
+    if(Math.abs(randomX - bollclickx) < 50 && Math.abs(randomY - bollclicky) < 50){ 
       let img = document.querySelector('.boll-img');  
-      let target = document.querySelector('.target');
+      let target = document.querySelector('.target'); 
       excus.textContent = "캐치 성공 !"
       target.style.display = 'none'
       img.style.display = 'block'
@@ -141,6 +154,7 @@ const catchpokemon = (img) => {
             },2000)
             //포켓몬이 잡힘
             setTimeout(() => {
+              excus.textContent = `${pokemonname}이 잡혔습니다`
               img.style.filter = 'grayscale(80%)';
               starExplosion(img)
             },3500)

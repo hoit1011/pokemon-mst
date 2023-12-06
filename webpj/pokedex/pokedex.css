@@ -1,0 +1,13 @@
+#pokedex{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px;
+  justify-content: space-between;
+  max-width: 2200px;
+}
+
+#pokedex li {
+  width: 10%; 
+  list-style-type: none;
+}
