@@ -52,7 +52,7 @@ async function updateImage() {
   randomContainer.innerHTML = '';
   randomContainer.appendChild(target);
 
-  let randomInterval = getRandomInterval(10000, 10000);
+  let randomInterval = getRandomInterval(3000, 7000);
   console.log(randomInterval)
 
   timerId = setTimeout(updateImage, randomInterval);
@@ -158,6 +158,8 @@ const catchpokemon = (img) => {
               excus.textContent = `${pokemonname}이 잡혔습니다`
               img.style.filter = 'grayscale(80%)';
               starExplosion(img)
+              }, 3500);
+            setTimeout(() => {
               fetch(`http://localhost:3000/users/${user_id}`)
                 .then(response => response.json())
                 .then(user => {
@@ -174,8 +176,8 @@ const catchpokemon = (img) => {
                   .catch(error => console.error('Error:', error));
                 })
                 .catch(error => console.error('Error:', error));
-              }, 3500);
-            }
+            },4500)
+          }
             else{
               console.log("놓쳤습니다 ! ")
               setTimeout(() => {

@@ -14,16 +14,27 @@ const getPokemon = () => {
     displayPokemon(pokemon)
   })
 }
-const displayPokemon = pokemon => {
+
+const displayPokemon = async pokemon => {
+  const user_id = JSON.parse(localStorage.getItem('current_user_id'));
+  
+  // 사용자 정보 가져오기
+  const userResponse = await fetch(`http://localhost:3000/users/${user_id}`);
+  const user = await userResponse.json();
+  const userPokemonIds = user ? user.pokemon : [];
+
   const pokemonString = pokemon
     .map(
       singlePokemon => `
     <li>
-      <img src="${singlePokemon.image}" />
+      <img src="${singlePokemon.image}" style="${userPokemonIds.includes(singlePokemon.id) ? '' : 'filter: grayscale(100%)'}" />
       <h3>${singlePokemon.id}. ${singlePokemon.name} </h3>
     </li>`
     )
-    .join("")
-  pokedex.innerHTML = pokemonString
+    .join("");
+  pokedex.innerHTML = pokemonString;
 }
+
+
+
 getPokemon()
