@@ -128,3 +128,9 @@ footer{
   display: flex;
   font-family: 'Kanit', sans-serif;
 }
+
+@media only screen and (max-width: 1000px){
+  .head-card{
+    display: none;
+  }
+}
