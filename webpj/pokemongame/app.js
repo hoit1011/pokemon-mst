@@ -139,7 +139,7 @@ const catchpokemon = (img) => {
         swing(img)
       },1000)
       setTimeout(() => {
-        if(Math.random() > 0.05){
+        if(Math.random() > 0.9){
           console.log("1")
           setTimeout(() => {
             swing(img)
